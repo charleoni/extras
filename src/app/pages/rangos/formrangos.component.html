@@ -1,0 +1,79 @@
+<div>
+    <form [formGroup]="form">
+        <div class="row">
+            <div class="col text-center">
+                <h1>{{title}}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label class="form-label">Código rango</label>
+                    <input type="text" formControlName="codigo" class="form-control">
+                    <div class="validationErrorRed">
+                        <ng-container *ngFor="let validation of validationFormMessage.codigo">
+                            <div *ngIf="isValid('codigo', validation.type)">
+                                <small>{{validation.message}}</small>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label class="form-label">Nombre Rango</label>
+                    <input type="text" formControlName="rango1" class="form-control">
+                    <div class="validationErrorRed">
+                        <ng-container *ngFor="let validation of validationFormMessage.rango1">
+                            <div *ngIf="isValid('rango1', validation.type)">
+                                <small>{{validation.message}}</small>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label class="form-label">Hora Inicio</label>
+                    <input type="datetime" formControlName="inicio" class="form-control">
+                    <div class="validationErrorRed">
+                        <ng-container *ngFor="let validation of validationFormMessage.inicio">
+                            <div *ngIf="isValid('inicio', validation.type)">
+                                <small>{{validation.message}}</small>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label class="form-label">Hora final</label>
+                    <input type="datetime" formControlName="fin" class="form-control">
+                    <div class="validationErrorRed">
+                        <ng-container *ngFor="let validation of validationFormMessage.fin">
+                            <div *ngIf="isValid('fin', validation.type)">
+                                <small>{{validation.message}}</small>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+
+            </div>
+        </div>        
+
+        <div class="card-footer border-0 text-right">
+            <a [routerLink]="['/rangos']" class="btn btn-warning shadow-none mr-2">
+                Regresar
+            </a>
+            <button type="button" (click)="grabar()" class="btn shadow-none"
+                [ngClass]="{'btn-success': id, 'btn-primary': !id}" [disabled]="form.invalid">
+                {{btnName}}
+            </button>
+        </div>
+    </form>
+</div>
